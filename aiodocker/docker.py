@@ -1,14 +1,11 @@
 import io
 import os
-import base64
 import urllib
 import aiohttp
 import asyncio
-import hashlib
 import tarfile
 import json
 import datetime as dt
-from aiohttp import websocket
 
 from aiodocker.channel import Channel
 from aiodocker.utils import identical
