@@ -54,8 +54,11 @@ class Docker:
         if (response.status // 100) in [4, 5]:
             what = yield from response.read()
             response.close()
-            raise ValueError("Got a failure from the server: '%s'" % (
-                what.decode('utf-8').strip()
+            raise ValueError("Response code %s from request to %s"
+                ": '%s'" % (
+                response.status,
+                url,
+                what.decode('utf-8').strip(),
             ))
 
         if 'json' in response.headers.get("Content-Type", ""):
